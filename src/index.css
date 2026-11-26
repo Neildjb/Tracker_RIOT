@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+/* Identité visuelle NEXUS ANALYTICS — thème sombre noir / bleu nuit / violet / cyan */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-void: #05060f;
+  --color-night-950: #080a1a;
+  --color-night-900: #0b0e22;
+  --color-night-850: #0f1229;
+  --color-night-800: #141834;
+  --color-night-700: #1c2145;
+  --color-line: #252a52;
+  --color-line-strong: #343a6b;
+
+  --color-ink: #e7e9ff;
+  --color-ink-2: #a9aed6;
+  --color-ink-3: #767ba6;
+
+  --color-nexus-cyan: #22d3ee;
+  --color-nexus-violet: #8b5cf6;
+  --color-nexus-violet-soft: #a78bfa;
+
+  /* Séries de graphiques (palette validée contraste + daltonisme sur #0f1229) */
+  --color-series-a: #0ea5b7;
+  --color-series-b: #8b5cf6;
+  --color-win: #10a37f;
+  --color-loss: #e5484d;
+  --color-warn: #e0a526;
+
+  --animate-fade-up: fade-up 0.45s ease-out both;
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  background: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgb(139 92 246 / 0.14), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgb(34 211 238 / 0.08), transparent 60%),
+    var(--color-void);
+  background-attachment: fixed;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgb(37 42 82 / 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(37 42 82 / 0.35) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+.card {
+  background: linear-gradient(180deg, rgb(20 24 52 / 0.85), rgb(15 18 41 / 0.85));
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--color-nexus-cyan), var(--color-nexus-violet-soft));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Recharts : texte des axes en encre secondaire */
+.recharts-cartesian-axis-tick-value { fill: var(--color-ink-3); font-size: 11px; }
+.recharts-legend-item-text { color: var(--color-ink-2) !important; font-size: 12px; }
+
+::selection { background: rgb(139 92 246 / 0.4); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
