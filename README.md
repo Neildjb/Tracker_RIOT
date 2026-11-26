@@ -92,7 +92,8 @@ Prérequis : **Node.js 20 ou plus récent** et npm.
 
 ```bash
 npm install
-# créer un fichier .env à la racine et y mettre RIOT_API_KEY (voir §7)
+cp .env.example .env        # Windows PowerShell : Copy-Item .env.example .env
+                            # puis renseigner RIOT_API_KEY dans .env (voir §7)
 npm run dev                 # backend sur :3001 + frontend sur http://localhost:5173
 ```
 
@@ -110,7 +111,7 @@ Sans clé, l'application démarre en **mode démonstration**.
 
 1. Se connecter sur <https://developer.riotgames.com> avec un compte Riot.
 2. Copier la **Development API Key** affichée sur le tableau de bord (elle **expire toutes les 24 h** ; pour un usage durable, demander une *Personal* ou *Production* key).
-3. La placer dans le fichier `.env` à la racine (jamais commité, il est dans `.gitignore`) :
+3. Copier `.env.example` en `.env` (modèle publié, sans clé), puis y coller la clé. Le fichier `.env` n'est jamais commité : il est dans `.gitignore`.
 
 ```env
 RIOT_API_KEY=RGAPI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
